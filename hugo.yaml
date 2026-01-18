@@ -1,0 +1,28 @@
+baseURL: "https://kernelforge.io/"
+languageCode: "en-us"
+title: "KernelForge"
+theme: "PaperMod"
+
+params:
+  description: "Secure embedded Linux edge systems: Yocto, OTA, hardening, fleet-ready architecture."
+  ShowReadingTime: true
+  ShowCodeCopyButtons: true
+  ShowPostNavLinks: true
+  defaultTheme: auto
+
+menu:
+  main:
+    - name: Projects
+      url: /projects/
+      weight: 10
+    - name: Blog
+      url: /blog/
+      weight: 20
+    - name: About
+      url: /about/
+      weight: 30
+      
+caches:
+  images:
+    dir: :cacheDir/images
+
