@@ -1,0 +1,40 @@
+/* Default (light) */
+:root {
+  --kf-bg: url("/img/pcb_bg_light.png");
+}
+
+/* Dark mode (support both patterns: body.dark and data-theme="dark") */
+:root[data-theme="dark"],
+body.dark {
+  --kf-bg: url("/img/pcb_bg_dark.png");
+}
+
+/* Apply background image without fighting PaperMod's theme color */
+html,
+body,
+body.list,
+html[data-theme="dark"] body.list {
+  background-color: var(--theme);
+  background-image: var(--kf-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 769px) {
+  html,
+  body,
+  body.list,
+  html[data-theme="dark"] body.list {
+    background-attachment: fixed;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html,
+  body,
+  body.list,
+  html[data-theme="dark"] body.list {
+    background-attachment: scroll;
+  }
+}
