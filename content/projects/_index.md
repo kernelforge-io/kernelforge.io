@@ -1,5 +1,9 @@
 +++
-date = '2026-01-17T00:49:44-06:00'
-draft = true
-title = 'Projects'
+title = "Projects"
+draft = false
 +++
+
+- ota-fetch: secure OTA downloader + verifier (RAUC-ready)
+- ota-workbench: release authoring/signing tool
+- KernelForge Yocto stack: secure base OS (WIP)
+
