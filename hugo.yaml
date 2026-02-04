@@ -1,6 +1,6 @@
 baseURL: "https://kernelforge.io/"
 languageCode: "en-us"
-title: "KernelForge"
+title: "Kernel Forge"
 theme: "PaperMod"
 
 params:
@@ -12,7 +12,7 @@ params:
 
   profileMode:
     enabled: true
-    title: "KernelForge"
+    title: "Kernel Forge"
     subtitle: "Secure embedded Linux edge systems — Yocto, OTA, hardening, fleet-ready architecture."
     buttons:
       - name: Projects
