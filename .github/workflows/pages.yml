@@ -3,6 +3,8 @@ name: Deploy Hugo site to GitHub Pages
 on:
   push:
     branches: ["master"]
+  pull_request:
+    branches: ["master"]
 
 permissions:
   contents: read
@@ -26,7 +28,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "latest"
+          hugo-version: "0.159.1"
           extended: true
 
       - name: Build
@@ -38,6 +40,7 @@ jobs:
           path: ./public
 
   deploy:
+    if: github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

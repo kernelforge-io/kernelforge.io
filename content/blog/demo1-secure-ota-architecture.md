@@ -1,6 +1,6 @@
 ---
 title: "Demo 1: Secure OTA — Architecture Deep Dive"
-date: 2026-03-28
+date: 2026-03-29
 summary: "A production-grade OTA update architecture for embedded Linux — PKI, mTLS enrollment, manifest-first verification, A/B rollback, and the Yocto layers that wire it all together."
 description: "A production-grade OTA update architecture for embedded Linux — PKI, mTLS enrollment, manifest-first verification, A/B rollback, and the Yocto layers that wire it all together."
 tags: ["ota", "embedded-linux", "yocto", "rauc", "security", "pki"]
