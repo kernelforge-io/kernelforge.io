@@ -12,7 +12,7 @@ The Kernel Forge OTA Reference is a production-grade OTA update implementation f
 
 This post walks through the full architecture: why each piece exists, how they connect, and where I drew the line between "reference implementation" and "production deployment."
 
-The complete implementation is Apache-2.0 licensed, SPDX-headered throughout. The [OTA Reference](https://github.com/kernelforge-io/ota-reference) repository is the build entry point (kas/Yocto). Key components have their own repositories: [ota-fetch](https://github.com/kernelforge-io/ota-fetch), [kernelforge-pki](https://github.com/kernelforge-io/kernelforge-pki), and [ota-workbench](https://github.com/kernelforge-io/ota-workbench).
+The complete implementation is Apache-2.0 licensed, SPDX-headered throughout. The [OTA Reference](https://github.com/kernelforge-io/kernelforge-ota-reference) repository is the build entry point (kas/Yocto). Key components have their own repositories: [ota-fetch](https://github.com/kernelforge-io/ota-fetch), [kernelforge-pki](https://github.com/kernelforge-io/kernelforge-pki), and [ota-workbench](https://github.com/kernelforge-io/ota-workbench).
 
 ## System overview
 
@@ -29,26 +29,26 @@ The OTA pipeline has a few core responsibilities, and each one is handled by a d
 │                     OTA UPDATE FLOW                          │
 │                                                              │
 │  Build Server                        Device                  │
-│  ┌─────────────┐                    ┌─────────────────────┐  │
-│  │ Build image  │                    │                     │  │
-│  │ Sign bundle  │                    │  ota-fetch daemon   │  │
-│  │ Sign manifest│──── mTLS ────────▶│    │                 │  │
-│  │ Serve update │    channel         │    ▼                 │  │
-│  └─────────────┘                    │  Verify manifest     │  │
-│                                     │  (signature + cert)  │  │
-│                                     │    │                 │  │
-│                                     │    ▼                 │  │
-│                                     │  Download payload    │  │
-│                                     │  (hash verified)     │  │
-│                                     │    │                 │  │
-│                                     │    ▼                 │  │
-│                                     │  RAUC install        │  │
-│                                     │  (independent sig    │  │
-│                                     │   verification)      │  │
-│                                     │    │                 │  │
-│                                     │    ▼                 │  │
-│                                     │  A/B slot switch     │  │
-│                                     │  + rollback safety   │  │
+│  ┌──────────────┐                   ┌─────────────────────┐  │
+│  │ Build image  │                   │                     │  │
+│  │ Sign bundle  │                   │  ota-fetch daemon   │  │
+│  │ Sign manifest│──── mTLS ───────▶│    │                │  │
+│  │ Serve update │    channel        │    ▼                │  │
+│  └──────────────┘                   │  Verify manifest    │  │
+│                                     │  (signature + cert) │  │
+│                                     │    │                │  │
+│                                     │    ▼                │  │
+│                                     │  Download payload   │  │
+│                                     │  (hash verified)    │  │
+│                                     │    │                │  │
+│                                     │    ▼                │  │
+│                                     │  RAUC install       │  │
+│                                     │  (independent sig   │  │
+│                                     │   verification)     │  │
+│                                     │    │                │  │
+│                                     │    ▼                │  │
+│                                     │  A/B slot switch    │  │
+│                                     │  + rollback safety  │  │
 │                                     └─────────────────────┘  │
 └──────────────────────────────────────────────────────────────┘
 ```
@@ -178,10 +178,10 @@ The token lifecycle:
 └─────┬──────┘         └────────┬──────────┘         └──────┬───────┘
       │                         │                           │
       │  1. Present bearer      │                           │
-      │     token + CSR ───────▶│                           │
+      │     token + CSR ──────▶│                           │
       │                         │                           │
       │                         │  2. Validate token,       │
-      │                         │     sign CSR ────────────▶│
+      │                         │     sign CSR ───────────▶│
       │                         │                           │
       │                         │  3. Return signed         │
       │  4. Receive device      │◀──── device cert ────────│
@@ -620,6 +620,6 @@ The OTA pipeline is the trust anchor for everything Kernel Forge builds on top o
 
 Next up: Demo 2 — containerized inference workloads with least privilege, built on top of this OTA foundation.
 
-The full implementation is available at [github.com/kernelforge-io/ota-reference](https://github.com/kernelforge-io/ota-reference), Apache-2.0 licensed with SPDX headers throughout.
+The full implementation is available at [github.com/kernelforge-io/kernelforge-ota-reference](https://github.com/kernelforge-io/kernelforge-ota-reference), Apache-2.0 licensed with SPDX headers throughout.
 
 — Kernel Forge
